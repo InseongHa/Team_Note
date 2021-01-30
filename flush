@@ -1,3 +1,25 @@
-void myflush() {
+voie myflush_1() {
+    while(1) {
+        if(!cin.fail()) {
+            if(cin.get() != '\n) {
+                flush();
+                //continue;
+            }
+            else { break; }
+        }
+        else { flush(); }
+    }
+}
+
+-------------------------------
+
+void myflush_2() {
+    cin.clear();
     while(cin.get() != '\n');
 }
+
+-------------------------------
+
+//void myflush_3() {
+//    while(cin.get() != '\n');
+//}
