@@ -1,0 +1,3 @@
+void myflush() {
+    while(cin.get() != '\n');
+}
