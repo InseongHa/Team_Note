@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	string S;
+	cin >> S;
+	int num = 0;
+	
+	vector <char> temp;
+
+	sort(S.begin(), S.end());
+
+	for (int i = 0; i < S.size(); i++) {
+		if (isdigit(S[i])) {
+			num += S[i] - '0';
+		}
+		else {
+			temp.push_back(S[i]);
+		}
+	}
+
+	for (int i = 0; i < temp.size(); i++) {
+		cout << temp[i];
+	}
+
+	cout << num << endl;
+
+	return 0;
+}
