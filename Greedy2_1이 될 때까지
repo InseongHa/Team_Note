@@ -5,10 +5,10 @@ using namespace std;
 int main()
 {
 	int N = 25; // 정해진 수
-	int K = 5; // 정해진 수
+	int K = 3; // 정해진 수
 	int cnt = 0;
 
-	while (N > 1) {
+	while (N > 1) {		// 이와 같은 경우 N과 K의 수가 매우 크지 않다는 가정 하에 효율적인 코드가 될 수 있다.
 		if (N % K == 0) {
 			N /= K;
 			cnt++;
@@ -18,8 +18,23 @@ int main()
 			cnt++;
 		}
 	}
-
 	cout << "총 횟수: " << cnt << endl;
+
+
+	int result = 0;			// 이렇게 하면 N과 K의 값이 매우 커진다 하더라도 빠른 시간복잡도 안에 과정을 진행할 수 있다. N의 값이 기하급수적으로 줄 수 있기 때문.
+	while (1) {
+		int target = (N / K) * K;
+		result += (N - target);
+		N = target;
+
+		if (N < K) break;
+		result++;
+		N /= K;
+	}
+	result += (N - 1);
+	cout << result << endl;
+
+
 
 	return 0;
 }
