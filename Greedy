@@ -1,0 +1,26 @@
+//Greedy Algorithm 기초 문제 : 거스름 돈
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int coin[4] = { 500, 100, 50, 10 }; // 동전 종류
+	int coin_cnt[4] = { 0, 0, 0, 0 }; // 각 동전이 필요한 개수
+	int count = 0; // 총 필요한 동전의 개수
+	int money = 1260; // 거슬러 줘야되는 값
+
+	for (int i = 0; i < sizeof(coin) / sizeof(int); i++) {
+		coin_cnt[i] = money / coin[i];
+		count += coin_cnt[i];
+		money %= coin[i];
+	}
+
+	for (int j = 0; j < sizeof(coin) / sizeof(int); j++) {
+		cout << coin[j] << "원 개수 : " << coin_cnt[j] << "개" << endl;
+	}
+
+	cout << "총 필요한 동전 개수 : " << count << endl;
+
+	return 0;
+}
