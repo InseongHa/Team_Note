@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void myflush();
+
+int main()
+{
+	int size;
+	string move;
+
+	cin >> size; // 정사각형 크기
+	myflush();
+	getline(cin, move); // 움직이는 규칙
+
+	// (x, y)
+	int dx[4] = { 0, -1, 0, 1 }; // 동 북 서 남
+	int dy[4] = { 1, 0, -1, 0 };
+
+	int location[2] = { 1, 1 }; // 유저 위치
+
+	for (int i = 0; i < move.size(); i++) {
+		if (move[i] == 'L') location[1] -= 1;
+		else if (move[i] == 'R') location[1] += 1;
+		else if (move[i] == 'U') location[0] -= 1;
+		else if (move[i] == 'D') location[0] += 1;
+
+		if (location[0] == 0) location[0] += 1;
+		if (location[0] > size) location[0] -= 1;
+		if (location[1] == 0) location[1] += 1;
+		if (location[1] > size) location[1] -= 1;
+	}
+
+	cout << "(" << location[0] << ", " << location[1] << ")" << endl;
+
+	return 0;
+}
+
+void myflush() {
+	cin.clear();
+	while (cin.get() != '\n');
+}
