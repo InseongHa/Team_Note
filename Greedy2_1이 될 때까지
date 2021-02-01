@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int N = 25; // 정해진 수
+	int K = 5; // 정해진 수
+	int cnt = 0;
+
+	while (N > 1) {
+		if (N % K == 0) {
+			N /= K;
+			cnt++;
+		}
+		else {
+			N -= 1;
+			cnt++;
+		}
+	}
+
+	cout << "총 횟수: " << cnt << endl;
+
+	return 0;
+}
