@@ -1,0 +1,19 @@
+int GCD(int a, int b){
+    
+    int r = 0;
+    
+    while(1){
+        r = a % b;
+        a = b;
+        b = r;
+        if (b == 0) { break; }
+    }
+    
+    return a;
+}
+
+int LCM(int a, int b){
+    
+    return a * b / GCD(a, b);
+    
+}
