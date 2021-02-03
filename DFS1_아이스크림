@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int n, m;
+int icecream[1001][100];
+
+bool dfs(int x, int y) {
+	// 범위가 정해져있으면 그 범위를 벗어나는 것에 대한 예외처리
+	if (x < 0 || x >= n || y < 0 || y >= m) {
+		return false;
+	}
+	if (icecream[x][y] == 0) {	// 뚤려서 채울 수 있는 칸
+		icecream[x][y] = 1; 
+		dfs(x - 1, y);
+		dfs(x, y - 1);
+		dfs(x + 1, y);
+		dfs(x, y + 1);
+
+		return true;	// 예를 들면, 000  11
+						//			  00  11  부분은 재귀쪽에서 false 반환하고 끝
+						//            부분까지는 모두 true 반환하고 더 이상 갈데가 없는채로 처음들어온 dfs가 true 반환
+						//			  
+	}
+	return false;
+}
+
+int main()
+{
+	int count = 0;	// 아이스크림의 개수
+
+	cin >> n >> m;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			scanf("%1d", &icecream[i][j]);
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (dfs(i, j) == true) { count++; }	// 처음순서로 들어간 dfs가 true를 반환하느냐 false를 반환하느냐
+		}
+	}
+
+	cout << count << endl;
+
+	// icecream[i][j] 들어있는 형태
+	// 00011
+	// 00110
+	// 11111
+	// 00000
+
+	return 0;
+}
