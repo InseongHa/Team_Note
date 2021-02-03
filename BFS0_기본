@@ -1,3 +1,5 @@
+# BFS는 재귀를 이용하지 않고 QUEUE를 이용한다..
+
 #include <bits/stdc++.h>
 
 using namespace std;
